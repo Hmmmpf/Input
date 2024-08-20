@@ -963,7 +963,7 @@ function __input_class_player() constructor
         }
         else
         {
-            __combo_state_dict[$ _verb_name] = new __input_class_combo_state(_verb_name, _combo_defintion);
+            __combo_state_dict[$ _verb_name] = new __input_class_combo_container(_verb_name, _combo_defintion);
         }
     }
 
