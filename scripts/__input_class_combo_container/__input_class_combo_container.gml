@@ -41,26 +41,23 @@ function __input_class_combo_container(_name, _combo_def) constructor
     {
         var _result = false;
         var i = 0;
-        var _min_phase = 0;
         
         repeat(__active_index)
         {
             _result = _result || __combo_state_array[i].__evaluate(_player_verb_struct);
-            _min_phase = min(_min_phase, __combo_state_array[i].__phase);
             i++;
         }
-        if(_min_phase > 0){
-            if(array_length(__combo_state_array) = i)
-            {
-                array_push(__combo_state_array, new __input_class_combo_state(__name, __combo_def));
-            }
         
-            _result = _result || __combo_state_array[i].__evaluate(_player_verb_struct);
-            if(__combo_state_array[i].__phase > 0){
-                __active_index += 1;
-            }
+        if(array_length(__combo_state_array) = i)
+        {
+            array_push(__combo_state_array, new __input_class_combo_state(__name, __combo_def));
         }
-        show_debug_message(array_length(__combo_state_array))
+        
+        _result = _result || __combo_state_array[i].__evaluate(_player_verb_struct);
+        if(__combo_state_array[i].__phase > 0){
+            __active_index += 1;
+        }
+        
         array_sort(__combo_state_array, function(_a,_b){
             return _b.__phase - _a.__phase;
         })
