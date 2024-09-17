@@ -243,7 +243,7 @@ function __input_gamepad_set_type()
                 #region vJoy for Wii U GCN USB driver on Windows
                 
                 case "3412adbe":
-                    if ((__button_count == 12) && (__axis_count == 6) && (__hat_count == 0) && __INPUT_ON_WINDOWS)
+                    if (((__button_count == 12) || (__button_count == 23)) && (__axis_count == 6) && (__hat_count == 0) && __INPUT_ON_WINDOWS)
                     {
                         if (!__INPUT_SILENT) __input_trace("Overridding controller ", __index ," type to GameCube");
                         __description = "GameCube";
@@ -367,6 +367,20 @@ function __input_gamepad_set_type()
                     {
                         __raw_type = "CommunityGameCube";
                         __guessed_type = false;
+                    }
+                break;
+
+                #endregion
+
+
+                #region PowerA Switch Controller
+
+                case "00000000":
+                    if ((__description == "Wireless Gamepad") && (__button_count == 16) && (__axis_count == 4) && (__hat_count == 1) && __INPUT_ON_WINDOWS)
+                    {
+                        if (!__INPUT_SILENT) __input_trace("Overridding controller ", __index ," type to Switch");
+                        __raw_type = "CommunityLikeSwitch";
+                        __guessed_type = true;
                     }
                 break;
 
